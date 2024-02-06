@@ -40,7 +40,7 @@ while (true) {
   if (move === '?') {
     header(`You have won ${userWins} times`);
     header("Win/Draw/Lose reference table: ");
-    console.log(getTable(moves, n, p));
+    console.log(getTable(moves, n));
     continue;
   } else if (move === '0') {
     header("See you again!");
@@ -56,7 +56,7 @@ while (true) {
   // the winner is
   console.log("Comp's move: ", moves[comps_move]);
 
-  const winner = calculateWinner(comps_move, +move, n, p);
+  const winner = calculateWinner(comps_move, +move, n);
   if (winner === "Win") userWins++;
   console.log(getWinner(winner));
   console.log("HMAC key: ", key);

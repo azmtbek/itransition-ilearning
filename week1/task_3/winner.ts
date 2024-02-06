@@ -5,7 +5,8 @@ const getWinner = (winner: string): string => {
   else if (winner === "Lose") out_winner = "You've lost!";
   return out_winner;
 };
-const calculateWinner = (a: number, b: number, n: number, p: number) => {
+const calculateWinner = (a: number, b: number, n: number) => {
+  const p = Math.floor(n / 2);
   const STATUS: { [key: number]: string; } = {};
   STATUS[-1] = "Win";
   STATUS[0] = "Draw";

@@ -4,9 +4,13 @@ import {
   randomBytes
 } from 'node:crypto';
 
+// requirement at least 256 bits length
+// 32 bytes is 256 bits
+const KEY_SIZE = 32;
+
 // hmac generator
 const getHMAC = (computers_move: string) => {
-  const key = randomBytes(Math.floor(256 / 8)).toString('hex');
+  const key = randomBytes(KEY_SIZE).toString('hex');
   const hmac = createHmac('SHA3-256', key);
 
   hmac.update(computers_move);

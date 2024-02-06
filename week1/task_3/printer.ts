@@ -24,7 +24,8 @@ const availabeMoves = (moves: Moves) => {
 
 
 
-const getTable = (moves: Moves, n: number, p: number,) => {
+const getTable = (moves: Moves, n: number) => {
+  const p = Math.floor(n / 2);
   let data = Array(n + 1).fill(0).map(_ => Array(n + 1));
   for (let i = 0; i < n + 1; i++) {
     for (let j = 0; j < n + 1; j++) {
@@ -36,7 +37,7 @@ const getTable = (moves: Moves, n: number, p: number,) => {
         data[i][j] = moves[i + j];
         continue;
       }
-      data[i][j] = calculateWinner(i, j, n, p);
+      data[i][j] = calculateWinner(i, j, n);
     }
   }
   return table(data);
