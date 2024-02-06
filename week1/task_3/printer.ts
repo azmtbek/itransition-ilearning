@@ -1,4 +1,5 @@
 import { table } from 'table';
+import { calculateWinner } from './winner.js';
 
 import type { Moves } from "./types.js";
 
@@ -21,11 +22,7 @@ const availabeMoves = (moves: Moves) => {
   console.log(`?: help`);
 };
 
-const STATUS: Moves = {};
-STATUS[-1] = "Win";
-STATUS[0] = "Draw";
-STATUS[1] = "Lose";
-const calculateWinner = (a: number, b: number, n: number, p: number) => Math.sign((a - b + p + n) % n - p);
+
 
 const getTable = (moves: Moves, n: number, p: number,) => {
   let data = Array(n + 1).fill(0).map(_ => Array(n + 1));
@@ -39,7 +36,7 @@ const getTable = (moves: Moves, n: number, p: number,) => {
         data[i][j] = moves[i + j];
         continue;
       }
-      data[i][j] = STATUS[calculateWinner(i, j, n, p)];
+      data[i][j] = calculateWinner(i, j, n, p);
     }
   }
   return table(data);
@@ -47,11 +44,5 @@ const getTable = (moves: Moves, n: number, p: number,) => {
 
 
 
-const getWinner = (winner: number): string => {
-  let out_winner = '';
-  if (STATUS[winner] === "Win") out_winner = "You've won!";
-  else if (STATUS[winner] === "Draw") out_winner = "Draw!";
-  else if (STATUS[winner] === "Lose") out_winner = "You've lost!";
-  return out_winner;
-};
-export { header, availabeMoves, getWinner, getTable, calculateWinner };
+
+export { header, availabeMoves, getTable };

@@ -1,11 +1,10 @@
 import {
   header,
   availabeMoves,
-  getWinner,
   getTable,
-  calculateWinner
 } from './printer.js';
-import { isValidArgsLength, isValidInput } from './validator.js';
+import { calculateWinner, getWinner } from './winner.js';
+import { isValidArgs, isValidInput } from './validator.js';
 import { getHMAC, getRandomNumber } from './hmac.js';
 import { input } from '@inquirer/prompts';
 
@@ -17,8 +16,8 @@ const args = process.argv.slice(2);
 const n = args.length;
 const p = Math.floor(n / 2);
 
-// exit if args length not valid
-if (isValidArgsLength(n) === false) {
+// exit if args not valid
+if (isValidArgs(args) === false) {
   process.exit();
 }
 // generate moves
@@ -26,9 +25,10 @@ const moves: Moves = {};
 for (let i = 0; i < n; i++) {
   moves[i + 1] = args[i];
 }
-let cur_move = '';
 
-while (cur_move !== '0') {
+let userWins = 0;
+
+while (true) {
   // get comp's move
   const comps_move = getRandomNumber(n);
   const { hmac, key } = getHMAC(comps_move.toString());
@@ -38,6 +38,7 @@ while (cur_move !== '0') {
 
   const move = await input({ message: 'Enter your move: ' });
   if (move === '?') {
+    header(`You have won ${userWins} times`);
     header("Win/Draw/Lose reference table: ");
     console.log(getTable(moves, n, p));
     continue;
@@ -56,6 +57,7 @@ while (cur_move !== '0') {
   console.log("Comp's move: ", moves[comps_move]);
 
   const winner = calculateWinner(comps_move, +move, n, p);
+  if (winner === "Win") userWins++;
   console.log(getWinner(winner));
   console.log("HMAC key: ", key);
   console.log();
