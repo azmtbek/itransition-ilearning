@@ -24,7 +24,8 @@ const availabeMoves = (moves: Moves) => {
 
 
 
-const getTable = (moves: Moves, n: number) => {
+const getTable = (moves: Moves) => {
+  const n = Object.keys(moves).length;
   const p = Math.floor(n / 2);
   let data = Array(n + 1).fill(0).map(_ => Array(n + 1));
   for (let i = 0; i < n + 1; i++) {

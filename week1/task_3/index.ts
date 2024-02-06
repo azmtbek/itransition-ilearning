@@ -14,7 +14,6 @@ import type { Moves } from './types.js';
 header("THE GAME: rock-paper-scissors and more ");
 const args = process.argv.slice(2);
 const n = args.length;
-const p = Math.floor(n / 2);
 
 // exit if args not valid
 if (isValidArgs(args) === false) {
@@ -40,7 +39,7 @@ while (true) {
   if (move === '?') {
     header(`You have won ${userWins} times`);
     header("Win/Draw/Lose reference table: ");
-    console.log(getTable(moves, n));
+    console.log(getTable(moves));
     continue;
   } else if (move === '0') {
     header("See you again!");
