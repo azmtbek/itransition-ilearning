@@ -1,8 +1,20 @@
 import React from 'react';
 
-function Header() {
+type params = {
+  name: string;
+};
+
+function Header({ name }: params) {
   return (
-    <div>Admin panel</div>
+    <div className='fixed left-0 top-0 text-2xl border-b w-full py-2'>
+      <div>
+
+        <div>
+          {name}
+        </div>
+      </div>
+
+    </div>
   );
 }
 
