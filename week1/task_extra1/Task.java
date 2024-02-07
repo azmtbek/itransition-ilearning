@@ -1,7 +1,10 @@
 package task_extra1;
 
 class Task {
-
+  public String name;
+  Task(String name) {
+    this.name = name;
+  }
   static {
     try {
       // process.exit(0);
