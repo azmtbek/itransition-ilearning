@@ -2,8 +2,6 @@
 
 
 
-
-
 ## requrements
 
  JavaScript or TypeScript, use React (you may use anything to store user data, e.g. implement back on Node.js+Express+MySQL; you may use some SaaS like Firebase - be careful  if you decide to use "out-of-the-box" users, it may be problematic to delete them).
