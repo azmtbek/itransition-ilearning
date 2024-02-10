@@ -22,3 +22,9 @@
 - [ ] If user account is blocked or deleted any next user’s request should redirect to the login page.
 
 - [ ] User can use any non-empty password (even one character). If you use 3rd-party service to store users, you may 1) either implement your own "users" there or 2) accept that some requirement cannot be implemented (but you get results faster).
+
+- [ ] Blocked user should not be able to login, deleted user can re-register. 
+
+---
+
+Recorded video:  registration, login, non-current user selection, user blocking (the user status should be updated), user unblocking, all user selection (including current), all user blocking (with automatic redirection to the login page).
