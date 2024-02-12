@@ -40,7 +40,6 @@ Of course, errors should be "applied" before formatting/rendering/exporting.
 
 How to submit the solution
 
-Send to p.lebedev@itransition.com:
 0) Full name.
 1) Link to the deployed project (you can use any 3) hosting you find suitable).
 2) Link to the code.
